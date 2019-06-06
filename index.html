@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Reward Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Francois+One|Kaushan+Script|Old+Standard+TT&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div
+      class="container d-flex justify-content-center align-items-center flex-column"
+    >
+      <h1 class="font-weight-bold mt-4">Reward Calculator</h1>
+      <form class=" col-12 row  justify-content-center" action="localhost:3000" method="POST">
+          <div class="col-12 row  justify-content-center">
+            <div class="my-2 col-12 col-md-3  mr-3 text-center">
+              <h6>Daily Volume</h6>
+              <input
+                type="number"
+                class="form-control"
+                id="dailyVolume"
+                name="dailyVolume"
+                placeholder="Number"
+                oninput="calculateFeeInDollar(),calculateRewardToken()"
+              />
+            </div>
+            <div class="mr-3 my-2 col-12 col-md-3 text-center">
+              <h6>Average Fee %</h6>
+              <input
+                type="number"
+                class="form-control "
+                id="averageFee"
+                name="averageFee"
+                placeholder="%"
+                oninput="calculateFeeInDollar(),calculateRewardToken()"
+              />
+            </div>
+            <div class="my-2 col-12 col-md-3 text-center">
+              <h6>Average fee $</h6>
+              <div
+                id="averageFeePercentage"
+                name="averageFeePercentage"
+                class="outputStyle"
+              >
+                %
+              </div>
+            </div>
+          </div>
+          <div class="col-12 row my-3 justify-content-center">
+            <div class=" mr-3 my-2 col-12 col-md-3 text-center">
+              <h6>No of stake</h6>
+              <input
+                type="number"
+                class="form-control "
+                id="numberOfStake"
+                name="numberOfStake"
+                placeholder="Number"
+                oninput="calculateRewardToken()"
+              />
+            </div>
+            <div class="mr-3 my-2 col-12 col-md-3 text-center">
+              <h6>Loyalty Reward %</h6>
+              <select class="form-control" id="exampleFormControlSelect1" onchange="calculateRewardToken(this.value)">
+                <option value="15" selected="selected">( 1 month ) 15%</option>
+                <option value="20" >( 1-6 months ) 20% </option>
+                <option value="25" >( > 6 months ) 25%</option>
+                <option value="0.1375" > ( 0.1375 ) Average </option>
+              </select>
+            </div>
+            <div class=" my-2 col-12 col-md-3 text-center">
+              <h6>Reward Per Token</h6>
+              <div id="rewardToken" name="rewardToken" class="outputStyle">$</div>
+            </div>
+          </div>
+        
+          <div class="col-12 col-md-9 flex-row">
+            <div class="my-2 col-12 col-md-9 m-auto p-auto text-center">
+              <h2 class="font-weight-bold">Your holding</h2>
+              <input
+                type="number"
+                id="holdingToken"
+                class="form-control col-12 col-md-5 m-auto"
+                name="holdingStake"
+              />
+              <button onClick="onSubmit()" class="btn btn-lg btn-secondary my-3">
+                Calculate
+              </button>
+            </div>
+        </form>
+        <div class="col-6 m-auto text-center">
+          <h2>Your Earning</h2>
+          <div class="">
+            <h6>
+              Daily: $ <span id="dailyCalc" class="font-weight-bold"></span>
+            </h6>
+            <h6>
+              Weekly: $ <span id="weeklyCalc" class="font-weight-bold"></span>
+            </h6>
+            <h6>
+              Monthly: $ <span id="yearlyCalc" class="font-weight-bold"></span>
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="logic.js"></script>
+  </body>
+</html>
